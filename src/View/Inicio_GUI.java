@@ -5,6 +5,8 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Laboratorio-Info
@@ -26,7 +28,11 @@ public class Inicio_GUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("aprender?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        clienteQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT c FROM Cliente c");
+        clienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : clienteQuery.getResultList();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -39,7 +45,22 @@ public class Inicio_GUI extends javax.swing.JFrame {
         sair_btn = new javax.swing.JButton();
         cadastrar_btn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        cod_txt = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        nome2_txt = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        email2_txt = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        tel2_txt = new javax.swing.JTextField();
+        alterar_btn = new javax.swing.JButton();
+        consultar_btn1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        cod2_txt = new javax.swing.JTextField();
+        excluir_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -89,34 +110,95 @@ public class Inicio_GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("CADASTRAR", jPanel3);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
-        );
+        jPanel4.setLayout(null);
+
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, clienteList, jTable1);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cliCod}"));
+        columnBinding.setColumnName("Código");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cliNome}"));
+        columnBinding.setColumnName("Nome");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cliEmail}"));
+        columnBinding.setColumnName("Emaill");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cliTel}"));
+        columnBinding.setColumnName("Telefone");
+        columnBinding.setColumnClass(Long.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel4.add(jScrollPane1);
+        jScrollPane1.setBounds(0, 1, 400, 90);
+
+        jLabel5.setText("Código:");
+        jPanel4.add(jLabel5);
+        jLabel5.setBounds(20, 100, 80, 30);
+        jPanel4.add(cod_txt);
+        cod_txt.setBounds(70, 100, 59, 30);
+
+        jLabel6.setText("Nome:");
+        jPanel4.add(jLabel6);
+        jLabel6.setBounds(20, 140, 80, 30);
+        jPanel4.add(nome2_txt);
+        nome2_txt.setBounds(70, 140, 150, 30);
+
+        jLabel7.setText("Email:");
+        jPanel4.add(jLabel7);
+        jLabel7.setBounds(20, 180, 80, 30);
+        jPanel4.add(email2_txt);
+        email2_txt.setBounds(70, 180, 190, 30);
+
+        jLabel8.setText("Telefone:");
+        jPanel4.add(jLabel8);
+        jLabel8.setBounds(20, 220, 80, 30);
+        jPanel4.add(tel2_txt);
+        tel2_txt.setBounds(70, 220, 100, 30);
+
+        alterar_btn.setText("Alterar");
+        alterar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterar_btnActionPerformed(evt);
+            }
+        });
+        jPanel4.add(alterar_btn);
+        alterar_btn.setBounds(280, 140, 100, 30);
+
+        consultar_btn1.setText("Consultar");
+        consultar_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultar_btn1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(consultar_btn1);
+        consultar_btn1.setBounds(280, 100, 100, 30);
 
         jTabbedPane1.addTab("CONSULTAR/ALTERAR", jPanel4);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(null);
+
+        jLabel9.setText("Código");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(150, 50, 80, 30);
+        jPanel1.add(cod2_txt);
+        cod2_txt.setBounds(130, 80, 80, 30);
+
+        excluir_btn.setText("Excluir");
+        excluir_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluir_btnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(excluir_btn);
+        excluir_btn.setBounds(130, 130, 80, 20);
 
         jTabbedPane1.addTab("EXCLUIR", jPanel1);
 
         getContentPane().add(jTabbedPane1);
-        jTabbedPane1.setBounds(-1, 4, 430, 300);
+        jTabbedPane1.setBounds(-1, 4, 400, 300);
+
+        bindingGroup.bind();
 
         setSize(new java.awt.Dimension(400, 300));
         setLocationRelativeTo(null);
@@ -129,6 +211,24 @@ public class Inicio_GUI extends javax.swing.JFrame {
     private void cadastrar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrar_btnActionPerformed
         Controller.Funcoes_DAO.Cadastrar();
     }//GEN-LAST:event_cadastrar_btnActionPerformed
+
+    private void alterar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterar_btnActionPerformed
+        Controller.Funcoes_DAO.alterar();
+    }//GEN-LAST:event_alterar_btnActionPerformed
+
+    private void consultar_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_btn1ActionPerformed
+        Controller.Funcoes_DAO.consultar();
+    }//GEN-LAST:event_consultar_btn1ActionPerformed
+
+    private void excluir_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluir_btnActionPerformed
+        String x = JOptionPane.showInputDialog(null,"Deseja apagar o registro \n1-Sim\n2-Não");
+        int op = Integer.parseInt(x);
+        if(op == 1){
+            Controller.Funcoes_DAO.excluir();
+        }else{
+            JOptionPane.showMessageDialog(null, "Exclusão cancelada!!");
+        }
+    }//GEN-LAST:event_excluir_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,18 +266,37 @@ public class Inicio_GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton alterar_btn;
     private javax.swing.JButton cadastrar_btn;
+    private java.util.List<View.Cliente> clienteList;
+    private javax.persistence.Query clienteQuery;
+    public static javax.swing.JTextField cod2_txt;
+    public static javax.swing.JTextField cod_txt;
+    private javax.swing.JButton consultar_btn1;
+    public static javax.swing.JTextField email2_txt;
     public static javax.swing.JTextField email_txt;
+    private javax.persistence.EntityManager entityManager;
+    private javax.swing.JButton excluir_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    public static javax.swing.JTextField nome2_txt;
     public static javax.swing.JTextField nome_txt;
     private javax.swing.JButton sair_btn;
+    public static javax.swing.JTextField tel2_txt;
     public static javax.swing.JTextField tel_txt;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
