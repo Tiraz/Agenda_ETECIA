@@ -21,7 +21,7 @@ public class Funcoes_DAO {
     public static String em;
     public static long tel;
        
-    public static String url = "jdbc:mysql://localhost/aprender"; // enderço do BD
+    public static String url = "jdbc:mysql://localhost:3307/aprender"; // enderço do BD
     public static String username = "root";        //nome de um usuário de seu BD
     public static String password = "";  // senha do BD
 

@@ -67,7 +67,7 @@ public class Inicio_GUI extends javax.swing.JFrame {
 
         jLabel4.setText("NOME:");
         jPanel3.add(jLabel4);
-        jLabel4.setBounds(10, 80, 33, 20);
+        jLabel4.setBounds(10, 80, 50, 20);
 
         sair_btn.setText("SAIR");
         sair_btn.addActionListener(new java.awt.event.ActionListener() {
