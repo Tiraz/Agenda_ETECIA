@@ -29,6 +29,15 @@ public class Inicio_GUI extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        nome_txt = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        email_txt = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        tel_txt = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        sair_btn = new javax.swing.JButton();
+        cadastrar_btn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -36,16 +45,47 @@ public class Inicio_GUI extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
-        );
+        jPanel3.setLayout(null);
+
+        jLabel1.setText("AGENDA");
+        jPanel3.add(jLabel1);
+        jLabel1.setBounds(160, 20, 100, 20);
+        jPanel3.add(nome_txt);
+        nome_txt.setBounds(60, 80, 270, 20);
+
+        jLabel2.setText("EMAIL:");
+        jPanel3.add(jLabel2);
+        jLabel2.setBounds(10, 120, 40, 20);
+        jPanel3.add(email_txt);
+        email_txt.setBounds(60, 120, 270, 20);
+
+        jLabel3.setText("TELEFONE:");
+        jPanel3.add(jLabel3);
+        jLabel3.setBounds(10, 160, 70, 20);
+        jPanel3.add(tel_txt);
+        tel_txt.setBounds(80, 160, 150, 20);
+
+        jLabel4.setText("NOME:");
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(10, 80, 33, 20);
+
+        sair_btn.setText("SAIR");
+        sair_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sair_btnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(sair_btn);
+        sair_btn.setBounds(220, 210, 120, 40);
+
+        cadastrar_btn.setText("CADASTRAR");
+        cadastrar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrar_btnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cadastrar_btn);
+        cadastrar_btn.setBounds(30, 210, 120, 40);
 
         jTabbedPane1.addTab("CADASTRAR", jPanel3);
 
@@ -60,7 +100,7 @@ public class Inicio_GUI extends javax.swing.JFrame {
             .addGap(0, 272, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab3", jPanel4);
+        jTabbedPane1.addTab("CONSULTAR/ALTERAR", jPanel4);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,7 +113,7 @@ public class Inicio_GUI extends javax.swing.JFrame {
             .addGap(0, 272, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        jTabbedPane1.addTab("EXCLUIR", jPanel1);
 
         getContentPane().add(jTabbedPane1);
         jTabbedPane1.setBounds(-1, 4, 430, 300);
@@ -81,6 +121,14 @@ public class Inicio_GUI extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(400, 300));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void sair_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sair_btnActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_sair_btnActionPerformed
+
+    private void cadastrar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrar_btnActionPerformed
+        Controller.Funcoes_DAO.Cadastrar();
+    }//GEN-LAST:event_cadastrar_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,9 +166,18 @@ public class Inicio_GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cadastrar_btn;
+    public static javax.swing.JTextField email_txt;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    public static javax.swing.JTextField nome_txt;
+    private javax.swing.JButton sair_btn;
+    public static javax.swing.JTextField tel_txt;
     // End of variables declaration//GEN-END:variables
 }
