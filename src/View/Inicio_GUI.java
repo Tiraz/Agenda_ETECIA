@@ -5,6 +5,8 @@
  */
 package View;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -61,6 +63,10 @@ public class Inicio_GUI extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         cod2_txt = new javax.swing.JTextField();
         excluir_btn = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        ticket_btn = new javax.swing.JButton();
+        atestado_btn = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -195,6 +201,32 @@ public class Inicio_GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("EXCLUIR", jPanel1);
 
+        jPanel2.setLayout(null);
+
+        ticket_btn.setText("TICKET");
+        ticket_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ticket_btnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ticket_btn);
+        ticket_btn.setBounds(70, 50, 230, 40);
+
+        atestado_btn.setText("ATESTADO");
+        atestado_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atestado_btnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(atestado_btn);
+        atestado_btn.setBounds(70, 120, 230, 40);
+
+        jButton3.setText("RELATÓRIO BD");
+        jPanel2.add(jButton3);
+        jButton3.setBounds(70, 190, 230, 40);
+
+        jTabbedPane1.addTab("RELATÓRIO", jPanel2);
+
         getContentPane().add(jTabbedPane1);
         jTabbedPane1.setBounds(-1, 4, 400, 300);
 
@@ -229,6 +261,19 @@ public class Inicio_GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Exclusão cancelada!!");
         }
     }//GEN-LAST:event_excluir_btnActionPerformed
+
+    private void ticket_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ticket_btnActionPerformed
+        Controller.Ticket_DAO.impressao();
+    }//GEN-LAST:event_ticket_btnActionPerformed
+
+    private void atestado_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atestado_btnActionPerformed
+        try {
+            Controller.Press_DAO.imprime();
+        } catch (Exception ex) {
+            //Erro padrao pode ser sunstituido por um JoptionPane com uma numeração especifica para identificar o problema.
+            Logger.getLogger(Inicio_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_atestado_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,6 +312,7 @@ public class Inicio_GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alterar_btn;
+    private javax.swing.JButton atestado_btn;
     private javax.swing.JButton cadastrar_btn;
     private java.util.List<View.Cliente> clienteList;
     private javax.persistence.Query clienteQuery;
@@ -277,6 +323,7 @@ public class Inicio_GUI extends javax.swing.JFrame {
     public static javax.swing.JTextField email_txt;
     private javax.persistence.EntityManager entityManager;
     private javax.swing.JButton excluir_btn;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -287,6 +334,7 @@ public class Inicio_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
@@ -297,6 +345,7 @@ public class Inicio_GUI extends javax.swing.JFrame {
     private javax.swing.JButton sair_btn;
     public static javax.swing.JTextField tel2_txt;
     public static javax.swing.JTextField tel_txt;
+    private javax.swing.JButton ticket_btn;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
